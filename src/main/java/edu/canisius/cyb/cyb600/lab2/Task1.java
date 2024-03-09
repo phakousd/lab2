@@ -12,12 +12,16 @@ public class Task1 {
      * @param stringToList String to parse into characters. Empty or Null strings should be treated as empty strings.
      * @return List of Characters. Should not return null.
      */
-    public List<Character> listAllCharacters(String stringToList){
-        if (stringToList == null){
-            return null;
-        }
+    public List<Character> listAllCharacters(String stringToList) {
+
         List<Character> characterList = new ArrayList<>();
-        for(int i=1; i<stringToList.toCharArray().length;i++){
+
+        if (stringToList == null || stringToList.isEmpty()){
+            return characterList;
+        }
+
+        //List<Character> characterList = new ArrayList<>();
+        for(int i=0; i<stringToList.toCharArray().length;i++){
             characterList.add(stringToList.toCharArray()[i]);
         }
         return characterList;
@@ -30,7 +34,13 @@ public class Task1 {
      * @return String with base surrounded by two Strings. Should not return null.
      */
     public String concatenateToFrontAndEnd(String baseString, String concat){
-        return baseString+concat;
+        if (baseString == null){
+            baseString = "";
+        }
+        if (concat == null){
+            concat = "";
+        }
+        return concat + baseString + concat;
     }
 
     /**
@@ -40,8 +50,11 @@ public class Task1 {
      * @throws NotADogException When someone is silly and doesn't put in a dog.
      */
     public void throwExceptionIfNotADog(String betterBeDog) throws NotADogException {
-        if (!betterBeDog.equals("dog")) {
+        if (!betterBeDog.toLowerCase().equals("dog")) {
             throw new NotADogException("This isn't a dog.");
+        }
+        else {
+            System.out.println("You are a doggy dog");
         }
     }
 
@@ -52,10 +65,14 @@ public class Task1 {
      * @return A list of 10 Strings if base string is empty or has content. Otherwise, an empty list.
      */
     public List<String> returnsTheSameStringTenTimes(String baseString){
+        if (baseString == null) {
+            return new ArrayList<>();
+
+        }
         List<String> arrayList = new ArrayList<>();
-        while (arrayList.size()+1 != 10){
+        while (arrayList.size() < 10){
             arrayList.add(baseString);
         }
-        return new ArrayList<>();
+        return arrayList;
     }
 }
