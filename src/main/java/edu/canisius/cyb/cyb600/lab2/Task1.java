@@ -53,9 +53,6 @@ public class Task1 {
         if (!betterBeDog.toLowerCase().equals("dog")) {
             throw new NotADogException("This isn't a dog.");
         }
-        else {
-            System.out.println("You are a doggy dog");
-        }
     }
 
     /**
